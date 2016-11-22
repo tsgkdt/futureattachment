@@ -27,7 +27,9 @@ namespace FutureOfAttachments
             var connectionSettings = new ConnectionSettings(uri)
                 .InferMappingFor<Document>(m => m
                         .IndexName(DocumentsIndex)
-                );
+                //CallDetails.DebugInformationを出す用に
+                ).DisableDirectStreaming()
+                ;
             _client = new ElasticClient(connectionSettings);
         }
 
@@ -234,6 +236,7 @@ namespace FutureOfAttachments
                 .Type("document")
                 .Query(q => q.Term(qt => qt.Field("id").Value(id)))
                 .Take(1));
+                Console.WriteLine(searchResponse.CallDetails.DebugInformation);
             return searchResponse.Documents.First();
         }
     }
