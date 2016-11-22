@@ -7,7 +7,7 @@ class Program
     static void Main(string[] args)
     {
         //ElasticSearchが立っているところを指定してください
-        var sample = new IndexSample(new Uri("http://192.168.144.75:9200"));
+        var sample = new IndexSample(new Uri("http://192.168.xxx.xxx:9200"));
 
         sample.CreateMapping()
             .PutPipeline()
