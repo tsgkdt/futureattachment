@@ -16,6 +16,11 @@ class Program
             .AddAttachment(3, new Uri(@"http://www.mext.go.jp/b_menu/toukei/data/syogaikoku/__icsFiles/afieldfile/2015/07/17/1352615_01_1.xlsx"))
         ;
 
+        //Documentの取得
+        var result = sample.GetDocument(2);
+        //ファイルの情報を表示してみる
+        Console.WriteLine($"Author = {result.Attachment.Author} / Content = {result.Attachment.Content}");
+
         Console.WriteLine("finish");
     }
 }
